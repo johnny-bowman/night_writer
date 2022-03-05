@@ -10,4 +10,9 @@ RSpec.describe Translator do
   it "exists" do
     expect(@translator).to be_an_instance_of(Translator)
   end
+
+  it "has readable letters from braille_helper module" do
+    expect(@translator.alphabet[:a]).to eq(["O",".",".",".",".","."])
+  end
+
 end
