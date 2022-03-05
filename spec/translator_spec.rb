@@ -20,4 +20,7 @@ RSpec.describe Translator do
     expect(@translator.full_braille_rows("ab")).to eq([["O", ".", "O", "."], [".", ".", "O", "."], [".", ".", ".", "."]])
   end
 
+  it "prints braille letters" do
+    expect(@translator.print_braille("a b c")).to eq("O...O...OO\n....O.....\n..........\n")
+  end
 end
