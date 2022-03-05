@@ -12,10 +12,15 @@ RSpec.describe Translator do
   end
 
   it "has readable letters from braille_helper module" do
-    expect(@translator.alphabet[:a]).to eq(["O",".",".",".",".","."])
+    expect(@translator.alphabet["a"]).to eq(["O",".",".",".",".","."])
+    expect(@translator.alphabet[" "]).to eq([".",".",".",".",".","."])
+  end
+
+  it "creates three arrays representing the three rows of braille characters" do
+    expect(@translator.full_braille_rows("ab")).to eq([["O", ".", "O", "."], [".", ".", "O", "."], [".", ".", ".", "."]])
   end
 
   it "prints braille letters" do
-    expect(@translator.print_braille("abc")).to eq("O.O.OO\n..O...\n......")
+    expect(@translator.print_braille("a b c")).to eq("O...O...OO\n....O.....\n..........\n")
   end
 end

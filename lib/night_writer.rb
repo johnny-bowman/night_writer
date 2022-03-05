@@ -6,7 +6,7 @@ handle = File.open(ARGV[0], "r")
 message_text = handle.read
 handle.close
 
-new_file_text = translator.pancakes(message_text.chomp)
+new_file_text = translator.print_braille(message_text.chomp)
 braille = File.open(ARGV[1], "w")
 braille.write(new_file_text)
 
