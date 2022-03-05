@@ -9,4 +9,8 @@ class Translator
     @alphabet = alphabet
   end
 
+  def print_braille(text)
+    "#{bump_line(text, 0, 1)}\n#{bump_line(text, 2, 3)}\n#{bump_line(text, 4, 5)}"
+  end
+
 end
