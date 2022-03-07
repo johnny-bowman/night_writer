@@ -42,4 +42,10 @@ module BrailleHelper
       line_text
   end
 
+  def create_braille_array(braille_text)
+    braille_array = braille_text.chars
+    braille_array << "\n"
+    braille_array
+  end
+
 end
