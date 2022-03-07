@@ -41,14 +41,10 @@ class Translator
     dictionary_values
   end
 
-  def print_english(text)
-    x = text
+  def print_english(dictionary_values)
     words = ""
-    until x[0].empty?
-      x.each do |chunk|
-        words << "#{chunk[0..79].join}\n"
-        chunk.slice!(0..79)
-      end
+    dictionary_values.each do |value|
+      words << @alphabet.key(value)
     end
     words
   end
