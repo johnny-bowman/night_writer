@@ -29,13 +29,13 @@ RSpec.describe Translator do
   end
 
   it "organizes braille arrays into dictionary values" do
-    collected_braille = collect_braille_text([["O", ".", ".", ".", "O", ".", "O", "O"], [".", ".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."]])
+    collected_braille = @translator.collect_braille_text("O...O.OO\n....O...\n........")
 
-    expect(@translator.organize_braille_text(colcollected_braille).to eq([["O", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", "."], ["O", ".", "O", ".", ".", "."], ["O", "O", ".", ".", ".", "."]])
+    expect(@translator.organize_braille_arrays(collected_braille)).to eq([["O", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", "."], ["O", ".", "O", ".", ".", "."], ["O", "O", ".", ".", ".", "."]])
   end
 
   it "prints english text from braille" do
-    braille_arrays = collect_braille_text("O...O.OO\n....O...\n........")
-    expect(@translator.print_english(braille_arrays)).to eq("a bc")
+    dictionary_values = [["O", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", "."], ["O", ".", "O", ".", ".", "."], ["O", "O", ".", ".", ".", "."]]
+    expect(@translator.print_english(dictionary_values)).to eq("a bc")
   end
 end
