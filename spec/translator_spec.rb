@@ -27,4 +27,9 @@ RSpec.describe Translator do
   it "organizes braille text into nested arrays" do
     expect(@translator.collect_braille_text("O...O.OO\n....O...\n........")).to eq([["O", ".", ".", ".", "O", ".", "O", "O"], [".", ".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."]])
   end
+
+  it "prints english text from braille" do
+    braille_arrays = collect_braille_text("O...O.OO\n....O...\n........")
+    expect(@translator.print_english(braille_arrays)).to eq("a bc")
+  end
 end
