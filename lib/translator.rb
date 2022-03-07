@@ -26,4 +26,10 @@ class Translator
     words
   end
 
+  def collect_braille_text(text)
+    braille_array = text.chars
+    braille_array.delete("\n")
+    nested_braille_arrays = braille_array.each_slice((braille_array.length) / 3).to_a
+  end
+
 end
