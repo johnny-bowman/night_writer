@@ -32,4 +32,25 @@ class Translator
     nested_braille_arrays = braille_array.each_slice((braille_array.length) / 3).to_a
   end
 
+  def organize_braille_arrays(arrays)
+    dictionary_values = []
+    until arrays[0].empty?
+      dictionary_values << arrays.map {|array| array[0..1]
+      array.slice!(0..1)}.flatten
+    end
+    dictionary_values
+  end
+
+  def print_english(text)
+    x = text
+    words = ""
+    until x[0].empty?
+      x.each do |chunk|
+        words << "#{chunk[0..79].join}\n"
+        chunk.slice!(0..79)
+      end
+    end
+    words
+  end
+
 end
