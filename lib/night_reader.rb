@@ -9,3 +9,4 @@ handle.close
 new_file_text = braille_text.chomp
 english = File.open(ARGV[1], "w")
 english.write(new_file_text)
+binding.pry
