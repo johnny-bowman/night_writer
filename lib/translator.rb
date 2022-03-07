@@ -18,10 +18,8 @@ class Translator
     braille_chunks = full_braille_rows(text)
     words = ""
     until braille_chunks[0].empty?
-      braille_chunks.each do |chunk|
-        words << "#{chunk[0..79].join}\n"
-        chunk.slice!(0..79)
-      end
+      braille_chunks.each {|chunk| words << "#{chunk[0..79].join}\n"
+      chunk.slice!(0..79)}
     end
     words
   end
@@ -43,8 +41,10 @@ class Translator
 
   def print_english(dictionary_values)
     words = ""
-    dictionary_values.each do |value|
-      words << @alphabet.key(value)
+    until dictionary_values.empty?
+      dictionary_values[0..39].each {|value| words << @alphabet.key(value)
+      dictionary_values.delete(value)}
+      words << "\n"
     end
     words
   end
