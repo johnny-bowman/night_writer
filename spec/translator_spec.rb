@@ -36,6 +36,6 @@ RSpec.describe Translator do
 
   it "prints english text from braille" do
     dictionary_values = [["O", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", "."], ["O", ".", "O", ".", ".", "."], ["O", "O", ".", ".", ".", "."]]
-    expect(@translator.print_english(dictionary_values)).to eq("a bc")
+    expect(@translator.print_english(dictionary_values)).to eq("a bc\n")
   end
 end
