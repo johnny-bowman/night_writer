@@ -24,17 +24,22 @@ class Translator
     words
   end
 
-  def collect_braille_text(text)
-    braille_array = text.chars
-    braille_array.delete("\n")
-    nested_braille_arrays = braille_array.each_slice((braille_array.length) / 3).to_a
+  def collect_braille_text(braille_text)
+    braille_array = create_braille_array(braille_text)
+    individual_braille_rows = []
+    until braille_array.empty?
+      individual_braille_rows << braille_array[0..((braille_array.find_index("\n")) - 1)]
+      braille_array.slice!(0..braille_array.find_index("\n"))
+    end
+    individual_braille_rows
   end
 
   def organize_braille_arrays(arrays)
     dictionary_values = []
-    until arrays[0].empty?
-      dictionary_values << arrays.map {|array| array[0..1]
-      array.slice!(0..1)}.flatten
+    until arrays.empty?
+      dictionary_values << arrays[0..2].map {|array| array[0..1]
+        array.slice!(0..1)}.flatten until arrays[0].empty?
+      arrays.slice!(0..2)
     end
     dictionary_values
   end
@@ -42,8 +47,8 @@ class Translator
   def print_english(dictionary_values)
     words = ""
     until dictionary_values.empty?
-      dictionary_values[0..39].each {|value| words << @alphabet.key(value)
-      dictionary_values.delete(value)}
+      dictionary_values[0..39].each {|value| words << @alphabet.key(value)}
+      dictionary_values.slice!(0..39)
       words << "\n"
     end
     words
