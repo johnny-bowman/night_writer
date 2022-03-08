@@ -57,15 +57,11 @@ class Translator
 
   def print_english(dictionary_values)
     words = ""
-    until dictionary_values.empty?
-      dictionary_values[0..39].each {|value| if value.class == Array
-        words << @alphabet.key(value)
-      else
-        words << value
-      end}
-      dictionary_values.slice!(0..39)
-      words << "\n"
-    end
+    dictionary_values.each {|value| if value.class == Array
+      words << @alphabet.key(value)
+    else
+      words << value
+    end}
     words
   end
 
