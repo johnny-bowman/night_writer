@@ -21,7 +21,7 @@ RSpec.describe Translator do
   end
 
   it "prints braille letters" do
-    expect(@translator.print_braille("a b c")).to eq("O...O...OO\n....O.....\n..........\n")
+    expect(@translator.print_braille("A b c")).to eq("..O...O...OO\n......O.....\n.O..........\n")
   end
 
   it "puts braille text into nested arrays" do
@@ -36,7 +36,7 @@ RSpec.describe Translator do
 
   it "prints english text from braille" do
     dictionary_values = [["O", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", "."], ["O", ".", "O", ".", ".", "."], ["O", "O", ".", ".", ".", "."]]
-    expect(@translator.print_english(dictionary_values)).to eq("a bc\n")
+    expect(@translator.print_english(dictionary_values)).to eq("a bc")
   end
 
   it "capitalizes braille characters" do
@@ -53,7 +53,7 @@ RSpec.describe Translator do
       ])
 
     capitalized_braille = @translator.capitalize_braille(organized_braille)
-    expect(@translator.print_english(capitalized_braille)).to eq("The\n")
+    expect(@translator.print_english(capitalized_braille)).to eq("The")
   end
 
 end

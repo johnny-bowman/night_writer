@@ -37,7 +37,7 @@ module BrailleHelper
       "!" => [".",".","O","O","O","."],
       "?" => [".",".","O",".","O","O"],
       "shift" => [".",".",".",".",".","O"],
-      caps: %w(A B C D E F G H I J K L M N O P Q R  S T U V W X Y Z)
+      caps: %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
     }
   end
 
