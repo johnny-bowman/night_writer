@@ -25,11 +25,11 @@ RSpec.describe Translator do
   end
 
   it "puts braille text into nested arrays" do
-    expect(@translator.collect_braille_text("O...O.OO\n....O...\n........")).to eq([["O", ".", ".", ".", "O", ".", "O", "O"], [".", ".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."]])
+    expect(@translator.collect_braille_text("O...O.OO\n....O...\n........\n")).to eq([["O", ".", ".", ".", "O", ".", "O", "O"], [".", ".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."]])
   end
 
   it "organizes braille arrays into dictionary values" do
-    collected_braille = @translator.collect_braille_text("O...O.OO\n....O...\n........")
+    collected_braille = @translator.collect_braille_text("O...O.OO\n....O...\n........\n")
 
     expect(@translator.organize_braille_arrays(collected_braille)).to eq([["O", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", "."], ["O", ".", "O", ".", ".", "."], ["O", "O", ".", ".", ".", "."]])
   end
@@ -38,4 +38,22 @@ RSpec.describe Translator do
     dictionary_values = [["O", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", "."], ["O", ".", "O", ".", ".", "."], ["O", "O", ".", ".", ".", "."]]
     expect(@translator.print_english(dictionary_values)).to eq("a bc\n")
   end
+
+  it "capitalizes braille characters" do
+    braille_text = "...OO.O.\n..OOOO.O\n.OO.....\n"
+
+    braille_arrays = @translator.collect_braille_text(braille_text)
+
+    organized_braille = @translator.organize_braille_arrays(braille_arrays)
+
+    expect(@translator.capitalize_braille(organized_braille)).to eq([
+      "T",
+      ["O",".","O","O",".","."],
+      ["O",".",".","O",".","."]
+      ])
+
+    capitalized_braille = @translator.capitalize_braille(organized_braille)
+    expect(@translator.print_english(capitalized_braille)).to eq("The\n")
+  end
+
 end
