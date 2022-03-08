@@ -1,4 +1,4 @@
-## Night Writer is a program that converts english text to Braille, and vice-versa.
+## Night Writer is a program that converts English text into Braille, and vice-versa.
 
 To convert the english text in message.txt to Braille, type the following in your
 terminal:
